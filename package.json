@@ -1,0 +1,30 @@
+{
+  "name": "BudgetTracker",
+  "version": "1.0.0",
+  "description": "Додаток для відстеження бюджету",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/savaukr/BudgetTracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/savaukr/BudgetTracker/issues"
+  },
+  "homepage": "https://github.com/savaukr/BudgetTracker#readme",
+  "dependencies": {
+    "config": "^3.3.6",
+    "express": "^4.17.1",
+    "pg": "^8.5.1"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.1",
+    "nodemon": "^2.0.7"
+  }
+}

@@ -1,0 +1,18 @@
+
+create DATABASE budgettrecker;
+
+CREATE TABLE users (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR (255),
+	email VARCHAR (255) UNIQUE NOT NULL,
+	password VARCHAR (255)
+);
+
+CREATE TABLE spendings (
+    id SERIAL PRIMARY KEY,
+	category VARCHAR (255) UNIQUE NOT NULL,
+	amount NUMERIC (6,3),
+	date DATE,
+	time  TIME,
+	userId INTEGER REFERENCES users (id)
+);
