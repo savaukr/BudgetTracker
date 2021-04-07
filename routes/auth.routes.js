@@ -36,7 +36,7 @@ router.post(
 			}
 
 			const hashedPassword = await bcrypt.hash(password, 12)
-			const user = new User({name, email, hachedPassword})
+			const user = new User({name, email, hashedPassword})
 			await user.save()
 
 			res.status(201).json({message: 'Користувач успішно створений'})
@@ -66,7 +66,7 @@ router.post(
 			}
 
 			const {email, password} = req.body
-			const user = await Uset.findOne(email)
+			const user = await User.findOne(email)
 
 			if (!user) {
 				return res.status(400).json({message: 'Такого користувача не існує, зареєструйтесь, будь-ласка!'})
@@ -85,7 +85,7 @@ router.post(
 			res.json({token, userId: user.id, name: user.name})
 
 		} catch(e) {
-			res.status(500).json({message:'Помилка при реєстрації'})
+			res.status(500).json({message:'Помилка при авторизації'})
 		}
 
 
