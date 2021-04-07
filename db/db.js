@@ -1,8 +1,8 @@
 const Pool =  require('pg').Pool
 const config = require('config');
-const dbConfig = config.get('db.Config')
+const dbConfig = config.get('dbConfig')
 
-const pool = new Pool({...db.Config, 
+const pool = new Pool({...dbConfig, 
 	connectionString: process.env.DATABASE_URL,
 	ssl: {
 	    rejectUnauthorized: false

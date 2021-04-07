@@ -1,0 +1,18 @@
+﻿.btn-mrg {
+	margin-right: 1rem;
+	margin-bottom: 0.5rem; 
+}
+.button-wrap {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+	.row .col.s6 {
+		width:80%;
+	}
+	.row .col.offset-s3 {
+		margin-left:10%;
+	}
+}
