@@ -1,0 +1,25 @@
+.header-wrap {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding: 20px 0;
+	background-color: #546e7a;
+	color: #fff;
+}
+.header-wrap button {
+	height: 25px;
+	line-height: 25px;
+	font-size: 12px;
+	background-color: #545e63;
+	margin-top: 5px;
+}
+
+@media only screen and (max-width: 540px) {
+	.header-wrap {
+		flex-direction: column;
+	}
+	.header-wrap div{
+		margin: 5px 0;
+		text-align: center;
+	}
+}

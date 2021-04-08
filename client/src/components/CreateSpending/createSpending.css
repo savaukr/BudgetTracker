@@ -1,0 +1,6 @@
+.createSpending {
+	padding: 50px 0 0;
+}
+.createSpending select {
+	display: flex;
+}

@@ -1,2 +1,5 @@
 @import "~materialize-css/dist/css/materialize.min.css";
+.container {
+	width: 100%;
+}
 

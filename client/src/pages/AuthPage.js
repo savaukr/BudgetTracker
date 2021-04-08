@@ -2,12 +2,12 @@ import React, {useState, useEffect, useContext} from 'react'
 import './authPage.css'
 import {useHttp} from '../hooks/http.hook.js'
 import {useMessage} from '../hooks/message.hook.js'
-//import {AuthContext} from '../context/AuthContext.js'
+import {AuthContext} from '../context/AuthContext.js'
 
 
 export const AuthPage = () => {
 
-	//const auth = useContext(AuthContext)
+	const auth = useContext(AuthContext)
 	const message = useMessage()
 	const {loading, error, request, clearError} = useHttp()
 	const [form, setForm]=useState({
@@ -37,11 +37,11 @@ export const AuthPage = () => {
 	const loginHandler =  async () => {
 		try {
 			const data = await request('/api/auth/login', 'POST', {...form})
-		//	auth.login(data.token, data.userId)
+			auth.login(data.token, data.userId, data.userName)
 		} catch (e) {}
 	}
 
-	return (
+	return (			
 		<div className="row">
 			<div className="col s6 offset-s3">
 			  <h3 className="center-align">Війдіть або зареєструйтесь</h3>
