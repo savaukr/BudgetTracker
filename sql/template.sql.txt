@@ -8,11 +8,18 @@ CREATE TABLE users (
 	password VARCHAR (255)
 );
 
+CREATE TABLE categories (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR (255),
+	userId INTEGER REFERENCES users (id)
+);
+
 CREATE TABLE spendings (
     id SERIAL PRIMARY KEY,
 	category VARCHAR (255) UNIQUE NOT NULL,
 	amount NUMERIC (6,3),
 	date DATE,
 	time  TIME,
-	userId INTEGER REFERENCES users (id)
+	userId INTEGER REFERENCES users (id),
+	categoriesId INTEGER REFERENCES categories (id)
 );

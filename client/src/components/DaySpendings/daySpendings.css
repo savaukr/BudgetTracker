@@ -1,0 +1,5 @@
+.changeSpend, .deleteSpend {
+	margin: 0 7px;
+	color:  #03a9f4;
+	cursor: pointer;
+}

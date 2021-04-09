@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Header} from '../components/Header/Header.js'
 import {Footer} from '../components/Footer/Footer.js'
 import {Calendar} from '../components/Calendar/Calendar.js'
@@ -11,13 +11,13 @@ export const HomePage = () => {
 		<>
 			<Header/>
 			<main>
-				<div className="main-content">
-					<Calendar/>
-					<CreateSpending/>
+				<div className="main__content">
+					<Calendar />
+					<CreateSpending />
 				</div>
-				<div className="main-content">
-					<DaySpendings/>
-				</div>
+				<div className="main__content">
+					<DaySpendings />
+				</div>	
 			</main>
 			<Footer />
 		</>

@@ -1,7 +1,7 @@
 main {
 	min-height: 85vh;
 }
-.main-content {
+.main__content {
 	display: flex;
 	justify-content: space-around;
 }
