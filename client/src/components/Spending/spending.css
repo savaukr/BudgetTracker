@@ -1,0 +1,19 @@
+.changeSpend, .deleteSpend {
+	color:  #03a9f4;
+	cursor: pointer;
+}
+.spending-wrap {
+    display:flex;
+    justify-content: space-between;
+} 
+.spending {
+    margin: 0 5px;
+    width: 100px;
+    text-align: center;
+}
+.category {
+    min-width:100px;
+    font-size: 1.2em;
+    font-weight: 700;
+    text-align: left;
+}

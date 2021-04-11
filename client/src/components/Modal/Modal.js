@@ -1,7 +1,7 @@
 import React from 'react'
 import './modal.css'
 
-export const Modal = ({active, setActive, answer, setAnswer, title, children}) => {
+export const Modal = ({active, setActive, setAnswer, title, children}) => {
 	return (
 		<div
 			className={active ? 'modal__overlay active': 'modal__overlay'}

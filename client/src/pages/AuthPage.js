@@ -58,7 +58,7 @@ export const AuthPage = () => {
 				        value={form.name}
 				        onChange={changeHandler}
 				      />
-				      <label htmlFor="email">Email:</label>
+				      <label htmlFor="name">Ім'я:</label>
 				    </div>
 		          	<div className="input-field">
 				      <input 

@@ -1,21 +1,20 @@
 const db = require('../db/db.js')
 
-module.exports= class Spending{
+module.exports= class Spending {
 
 	constructor({category, amount, date, userId}) {
         this.category = category
         this.amount = amount 
-        this.date = date
+        this.date = date,
         this.userId = userId
     }
 
     async save(){     
         const newSpendings = await db.query(
-	        'INSERT INTO spendings (category, amount, date, userid ) values ($1, $2, $3, $4) RETURNING * ;',
-	        [this.category, this.amount, this.date,
-	         this.userId]
-	    )      
-        return await newSpendings.rows
+	        'INSERT INTO spendings (category, amount, date, userId ) values ($1, $2, $3, $4) RETURNING *;',
+	        [this.category, this.amount, this.date, this.userId]
+	    )     
+        return await newSpendings.rows[0]
     }
 
     static async getAll(){
@@ -36,15 +35,14 @@ module.exports= class Spending{
         const allSpendings = await db.query('SELECT * FROM spendings WHERE category = $1;', [category])
         return await allSpendings.rows[0]
     }
-    static async update (spending) {
-        const {category, amount, id} = spending
+    static async update({category, amount, id}) {
         const updatedSpending = await db.query(`UPDATE spendings SET category=$1, amount=$2 WHERE id = $3   RETURNING * ;`,
          [category, amount, id])
-        return await updatedSpending.rows
+        return await updatedSpending.rows[0]
     }
 
     static async delete({id}) {
-        const spending = await db.query(`DELETE  FROM spendings where id=$1  RETURNING * ;`, [id])
-        return await spending.rows
+        const spending = await db.query(`DELETE  FROM spendings where id=$1   RETURNING * ;`, [id])
+        return await spending.rows[0]
     }
 }

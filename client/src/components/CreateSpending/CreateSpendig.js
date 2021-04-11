@@ -1,16 +1,40 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
+import {useHttp} from '../../hooks/http.hook'
+import {AuthContext} from '../../context/AuthContext'
+import {useMessage} from '../../hooks/message.hook'
+
+
+
 import './createSpending.css'
 
-export const CreateSpending = () => {
-	const [selectValue, setSelectValue] = useState('grapefruit')
+
+export const CreateSpending = ({addSpending, valueDate}) => {
 	const initialState = {
 		amount:'',
 		category: ''
 	}
 	const [form, setForm] = useState(initialState)
 
-	const changeHandler = event => {
+	const auth = useContext(AuthContext)
+	const {loading, request } = useHttp()
+	const message = useMessage()
+	
+
+	const changeHandler = (event) => {
 		setForm({...form, [event.target.name]: event.target.value})
+	}
+	const strDate = `${valueDate.getFullYear()}-${valueDate.getMonth()}-${valueDate.getDate()}`
+	
+	const addSpendingHandler = async () => {
+		try {
+			const data = await request('/api/spending/create', 'POST', {...form, date:strDate, userId:auth.userId}, {
+				Authorization:`Bearer ${auth.token}`
+			})
+			addSpending(data.newSpending)
+			message(data.message)
+		} catch (e) {
+			message(e.message)
+		}
 	}
 
 	useEffect(() => {
@@ -21,14 +45,28 @@ export const CreateSpending = () => {
 			<div className="createSpending">
 				<div className="row">
 			        <div className="input-field">
-			          <input placeholder="Введіть суму" id="amount" type="number" className="validate"/>
+			          <input 
+					  	placeholder="Введіть суму"
+						id="amount"
+						className="validate"
+						type="number"
+						name="amount"
+						onChange={changeHandler}
+					  />
 			          <label htmlFor="amount">Сума витрати</label>
 			        </div>
 			    </div>
 			    <div className="row">
 			        <div className="input-field">
-			          <input placeholder="Введіть категорію" id="category" type="text" className="validate"/>
-			          <label htmlFor="amount">Категорія витрати</label>
+			          <input
+					    placeholder="Введіть категорію"
+					    id="category"
+						className="validate"
+						type="text"
+						name="category"
+						onChange={changeHandler}
+					  />
+			          <label htmlFor="category">Категорія витрати</label>
 			        </div>
 			    </div>
 			    <div className="row">
@@ -36,7 +74,8 @@ export const CreateSpending = () => {
 						className="btn waves-effect waves-light"
 						type="submit"
 						name="addSpending"
-						onClick={() => console.log('add spending')}
+						onClick={addSpendingHandler}
+						disabled={loading}
 					>
 						Додати витрату 
 					</button>	

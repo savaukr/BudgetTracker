@@ -1,5 +1,5 @@
 const pool = require('../db/db.js')
-// const db = require('../db/db.js')
+
 module.exports = class User {
  
     constructor({name, email, hashedPassword}) {
@@ -8,7 +8,7 @@ module.exports = class User {
         this.password = hashedPassword 
     }
     async save(){
-        const newUser = await pool.query('INSERT INTO users (name, email, password) values ($1, $2, $3) RETURNING *', [this.name, this.email, this.password]);
+        const newUser = await pool.query('INSERT INTO users (name, email, password) values ($1, $2, $3) RETURNING *;', [this.name, this.email, this.password]);
     }
     static async findOne(email) {
         const user = await pool.query('SELECT * FROM users WHERE email = $1;', [email])
@@ -19,7 +19,7 @@ module.exports = class User {
         return await allUsers.rows;
     }
     static async delete(id) {
-        const user = await pool.query(`DELETE  FROM users where id=$1  RETURNING *`, [id])
+        const user = await pool.query(`DELETE  FROM users where id=$1  RETURNING *;`, [id])
         return await user.rows
     }
 }

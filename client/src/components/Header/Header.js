@@ -8,7 +8,7 @@ export const Header = () => {
 
 	const auth = useContext(AuthContext)
 
-	const exithandler = () => {
+	const exitHandler = () => {
 		auth.logout()
 	}
 	return (
@@ -21,7 +21,7 @@ export const Header = () => {
 			</h5>
 			<div className = 'userName'>
 				<div>Ви увійшли, як <b>{auth.userName ? auth.userName : 'unknow user'}</b></div>
-				<button className="btn waves-effect waves-light" onClick={exithandler}>
+				<button className="btn waves-effect waves-light" onClick={exitHandler}>
 					Вийти
 				</button>
 			</div>

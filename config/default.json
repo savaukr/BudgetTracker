@@ -2,10 +2,11 @@
 	"dbConfig": {
 	  "user": "postgres",
 	  "password": "postgres",
-      "host": "localhost",
-      "port": 5432,
-      "database": "budgettracker"
-    }, 
-    "port": "5000",
-    "jwtSecret": "eliftech"
+    "host": "localhost",
+    "port": 5432,
+    "database": "budgettracker"
+  }, 
+  "port": "5000",
+  "jwtSecret": "eliftech",
+  "baseUrl": "http://localhost:5000"
 }
