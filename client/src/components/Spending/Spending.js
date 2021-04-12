@@ -14,7 +14,7 @@ export const Spending = ({spending, deleteSpending, updateSpending}) => {
 	const [form, setForm]=useState({
 		category: spending.category, amount: spending.amount
 	})
-    const {token} = useContext(AuthContext)
+    const {token, userId} = useContext(AuthContext)
     const {request} = useHttp()
     const message = useMessage()
 
@@ -38,7 +38,7 @@ export const Spending = ({spending, deleteSpending, updateSpending}) => {
 
     const updateHandler = useCallback(async (data) => {
         try {
-            const fetched = await request(`/api/spending/update/${id}`, 'PUT', {...data}, {
+            const fetched = await request(`/api/spending/update/${id}`, 'PUT', {...data, userId: userId}, {
 				Authorization: `Bearer ${token}`
 			})
 			updateSpending(fetched.id, fetched.category, fetched.amount)

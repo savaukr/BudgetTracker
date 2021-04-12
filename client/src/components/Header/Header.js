@@ -17,7 +17,7 @@ export const Header = () => {
 				ElifTech
 			</h6>
 			<h5>
-				Budjet Taracker App
+				Budjet Tracker
 			</h5>
 			<div className = 'userName'>
 				<div>Ви увійшли, як <b>{auth.userName ? auth.userName : 'unknow user'}</b></div>

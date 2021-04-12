@@ -55,7 +55,8 @@ export const HomePage = () => {
 		fetchSpendings()
 	}, [fetchSpendings])
 
-	const strDate = `${value.getDate()}-${value.getMonth()<10 ? '0'+value.getMonth():value.getMonth() }-${value.getFullYear()}`
+	const strDate = `${value.getDate()}-${value.getMonth()+1 <10 ? '0'+ (+value.getMonth()+1) : (+value.getMonth()+1) }-${value.getFullYear()}`
+	
 	return (
 		<>
 			<Header/>

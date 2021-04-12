@@ -66,7 +66,16 @@ router.post(
 router.put('/update/:id', async (req, res) => {
     try {
         const id = req.params.id
-        const updatedSpending = await Spending.update({...req.body, id:id})
+        let {category, amount, userId} = req.body
+        category = category.trim().toLowerCase()
+        category = category[0].toUpperCase() + category.substring(1)
+        let isExitCategory = await Category.findOne(category, userId)
+
+        if (!isExitCategory) {
+            const newCategory = new Category({name:category, userId})
+            isExitCategory =  await newCategory.save()
+        }
+        const updatedSpending = await Spending.update({categoryName:isExitCategory.name, amount, id:id})
         res.status(201).json(updatedSpending)
     } catch (e) {
         res.status(500).json({message: 'Не вийшло змінити витрату, спробуйте ще'})

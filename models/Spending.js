@@ -40,9 +40,9 @@ module.exports= class Spending {
         const allSpendings = await db.query('SELECT * FROM spendings WHERE category = $1;', [category])
         return await allSpendings.rows[0]
     }
-    static async update({category, amount, id}) {
+    static async update({categoryName, amount, id}) {
         const updatedSpending = await db.query(`UPDATE spendings SET category=$1, amount=$2 WHERE id = $3   RETURNING * ;`,
-         [category, amount, id])
+         [categoryName, amount, id])
         return await updatedSpending.rows[0]
     }
 
