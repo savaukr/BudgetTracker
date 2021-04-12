@@ -11,3 +11,13 @@ main {
 	justify-content: center;
 	align-items: center;
 }
+
+@media only screen and (max-width: 540px) {
+	.main__content {
+		flex-direction: column;
+		padding: 20px;
+	}
+	.calendar-wrap {
+		width:100%;
+	}
+}

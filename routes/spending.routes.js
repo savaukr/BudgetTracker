@@ -15,6 +15,16 @@ router.get('/', auth,  async (req, res) => {
         res.status(500).json({message:'Не вдалось отримати витрати з сервера'})
     }
 })
+//api/spending/date
+router.get('/date/:date', auth, async (req, res) => {
+    try {
+        const d = req.params.date
+        const spendings = await Spending.getAllByUserIdByDate({userId:req.user.userId, d: d})
+        res.json(spendings)
+    } catch (e) {
+        res.status(500).json({message:'Не вдалось отримати витрати з сервера'})
+    }
+})
 
 // api/spending/create
 router.post(

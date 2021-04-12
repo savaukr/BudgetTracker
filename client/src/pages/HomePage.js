@@ -11,19 +11,20 @@ import Calendar from 'react-calendar'
 import './homePage.css'
 
 export const HomePage = () => {
-	const [listSpendings, setListSpendings] = useState()
+	const [listSpendings, setListSpendings] = useState([])
 	const [value, onChange] = useState(new Date)
 	const {request, loading} = useHttp()
 	const {token} = useContext(AuthContext)
-	console.log(value)
+	
 	const fetchSpendings = useCallback(async () => {
 		try {
-			const data = await request('/api/spending/', 'GET', null, {
+			const strDate = `${value.getFullYear()}-${value.getMonth() < 10 ? '0'+value.getMonth() : value.getMonth()}-${value.getDate()}`
+			const data = await request(`/api/spending/date/${strDate}`, 'GET', null, {
 				Authorization: `Bearer ${token}`
 			})
 			if (data) setListSpendings(data)
 		} catch (e) {}
-	}, [token, request])
+	}, [token, request, value])
 
 	const addSpending = (spending) => {
 		setListSpendings((prev) => {
@@ -54,7 +55,7 @@ export const HomePage = () => {
 		fetchSpendings()
 	}, [fetchSpendings])
 
-
+	const strDate = `${value.getDate()}-${value.getMonth()<10 ? '0'+value.getMonth():value.getMonth() }-${value.getFullYear()}`
 	return (
 		<>
 			<Header/>
@@ -75,6 +76,7 @@ export const HomePage = () => {
 							listSpendings={listSpendings || []}
 							deleteSpending={deleteSpending}
 							updateSpending={updateSpending}
+							strDate={strDate}
 						/>
 					}
 				</div>	

@@ -25,6 +25,11 @@ module.exports= class Spending {
         const allSpendings = await db.query('SELECT * FROM spendings where userId= $1;', [userId])
         return await allSpendings.rows;
     }
+    static async getAllByUserIdByDate({userId, d}) {
+        const allSpendings = await db.query('SELECT * FROM spendings where userId= $1 AND date = $2 ;', [userId, d])
+        return await allSpendings.rows;
+    }
+
 
     static async findById({id}) {
         const spending = await db.query('SELECT * FROM spendings WHERE id = $1;', [id])
