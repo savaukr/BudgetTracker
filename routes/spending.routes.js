@@ -62,6 +62,7 @@ router.post(
         }
     }
 )
+
 // api/spending/update/:id
 router.put('/update/:id', async (req, res) => {
     try {
@@ -81,6 +82,7 @@ router.put('/update/:id', async (req, res) => {
         res.status(500).json({message: 'Не вийшло змінити витрату, спробуйте ще'})
     }
 })
+
 // api/spending/delete/:id
 router.delete('/delete/:id', async (req, res) => {
     try {

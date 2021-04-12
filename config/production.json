@@ -1,0 +1,12 @@
+{
+	"dbConfig": {
+	  "user": "wcpcrbpuryrdnx",
+	  "password": "69880db4b5bee6bacb90f64fb4fcf95a96456c828ade439d15fa507a321bc364",
+    "host": "ec2-54-155-35-88.eu-west-1.compute.amazonaws.com",
+    "port": 5432,
+    "database": "dec5h8i0mmmro9"
+  }, 
+  "port": "80",
+  "jwtSecret": "eliftech",
+  "baseUrl": "https://budgettrackereliftech.herokuapp.com/"
+}
