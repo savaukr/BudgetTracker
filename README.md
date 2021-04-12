@@ -30,3 +30,21 @@ salary input - user puts in his salary for that month. If you have implemented u
 Once all fields are filled in, show a table with the following columns - Income (salary input), Total Expenses (sum of user spendings for the picked month), and Difference.
 Play with colors or maybe show some text/image to notify the user whether he is OK or not in spending money.
 
+
+
+Для запуску проекту на локальносу сервері спочатку склонуйте репозиторій і виконайте команди:
+
+ 	git clone https://github.com/savaukr/BudgetTracker.git
+
+ 	cd budgettracker
+ 	npm install
+
+ 	cd client 
+ 	npm install
+
+ 	cd ..
+
+Створити у СУБД PostgresSql базу даних для проекту під назвою 'budgettracker' .
+У файлі sql/template.sql.txt знаходяться шаблони для створення таблиць базы даних PostgresSql. у файлі /config/default.json находяться налаштування для локального запуску проекту та бази даних.
+
+Запустіть в корні проекту npm run dev
