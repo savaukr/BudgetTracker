@@ -5,7 +5,9 @@
 /client/node_modules
 /.pnp
 .pnp.js
-#/config/production.json
+
+/config/production.json
+
 # testing
 /coverage
 
