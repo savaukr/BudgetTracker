@@ -2,7 +2,7 @@ const express = require('express')
 const config = require('config');
 const path = require('path')
 
-const PORT = process.env.PORT || 3000 //config.get('port') 
+const PORT = process.env.PORT || 5000 //config.get('port') 
 const app = express()
 
 app.use(express.json({extended: true}))
