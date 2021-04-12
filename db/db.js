@@ -9,6 +9,11 @@ const dbConfig = config.get('dbConfig')
 // 	}
 // })
 
-const pool = new Pool({...dbConfig})
+const pool = new Pool({...dbConfig,
+	connectionString: process.env.DATABASE_URL,
+	ssl: {
+	    rejectUnauthorized: false
+	}
+})
 
 module.exports = pool
